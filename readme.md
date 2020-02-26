@@ -1,5 +1,5 @@
 # Noteful Server
-Created by Fernando Gaol filho and Brenden Dowd
+Created by [Fernando Gaol filho](https://github.com/fernandogaol) and Brenden Dowd
 
 *****
 
