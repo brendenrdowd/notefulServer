@@ -1,5 +1,5 @@
 # Noteful Server
-Created by Humberto Hernandez and Brenden Dowd
+Created by Fernando Gaol filho and Brenden Dowd
 
 *****
 
