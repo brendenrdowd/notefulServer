@@ -3,9 +3,7 @@ CREATE TABLE "notes" (
 	"modified" TIMESTAMP DEFAULT now() NOT NULL,
 	"content" TEXT,
 	"name" TEXT NOT NULL,
-	"folder_id" INTEGER 
--- cascade delete
-	CONSTRAINT "notes_pk" PRIMARY KEY ("id")
+	CONSTRAINT "notes_pk" PRIMARY KEY ("n_id")
 ) WITH (
   OIDS=FALSE
 );
@@ -16,14 +14,15 @@ CREATE TABLE "folders" (
 	"f_id" INTEGER NOT NULL,
 	"name" INTEGER NOT NULL,
 	"modified" TIMESTAMP DEFAULT now() NOT NULL,
-	CONSTRAINT "folders_pk" PRIMARY KEY ("id")
+	"note_id" INTEGER ON DELETE CASCADE NOT NULL,
+	CONSTRAINT "folders_pk" PRIMARY KEY ("f_id")
 ) WITH (
   OIDS=FALSE
 );
 
 
+ALTER TABLE "folders" ADD CONSTRAINT "folders_fk0" FOREIGN KEY ("note_id") REFERENCES "notes"("n_id");
 
-ALTER TABLE "notes" ADD CONSTRAINT "notes_fk0" FOREIGN KEY ("folder_id") REFERENCES "folders"("f_id");
 
 
 
