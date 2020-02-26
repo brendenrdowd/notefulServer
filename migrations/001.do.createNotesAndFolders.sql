@@ -23,7 +23,7 @@ CREATE TABLE "folders" (
 
 
 
-ALTER TABLE "notes" ADD CONSTRAINT "notes_fk0" FOREIGN KEY ("folder_id") REFERENCES "folders"("id");
+ALTER TABLE "notes" ADD CONSTRAINT "notes_fk0" FOREIGN KEY ("folder_id") REFERENCES "folders"("f_id");
 
 
 
