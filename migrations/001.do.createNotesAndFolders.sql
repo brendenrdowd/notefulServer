@@ -15,7 +15,7 @@ CREATE TABLE "notes" (
 CREATE TABLE "folders" (
 	"f_id" INTEGER NOT NULL,
 	"name" INTEGER NOT NULL,
-	"modified" TIME NOT NULL,
+	"modified" TIMESTAMP NOT NULL,
 	CONSTRAINT "folders_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
