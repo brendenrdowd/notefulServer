@@ -62,3 +62,12 @@
 {"message":"Cannot set headers after they are sent to the client","level":"error"}
 {"message":"Folder with 39 was created.","level":"info"}
 {"message":"Cannot set headers after they are sent to the client","level":"error"}
+{"message":"Folder with 40 was created.","level":"info"}
+{"message":"Cannot set headers after they are sent to the client","level":"error"}
+{"message":"Folder with id 41 was created.","level":"info"}
+{"message":"Cannot set headers after they are sent to the client","level":"error"}
+{"message":"Folder with id 42 was created.","level":"info"}
+{"message":"Cannot set headers after they are sent to the client","level":"error"}
+{"message":"Folder with id 43 was created.","level":"info"}
+{"message":"Cannot set headers after they are sent to the client","level":"error"}
+{"message":"select * from \"notes\" - relation \"notes\" does not exist","level":"error"}
