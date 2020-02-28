@@ -1,12 +1,4 @@
-INSERT INTO folders(name)
-VALUES
-('Folder 1'),
-('Folder 2'),
-('Folder 3'),
-('Folder 4'),
-('Folder 5'),
-('Folder 6'),
-('Folder 7'),
-('Folder 8'),
-('Folder 9'),
-('Folder 10')
+INSERT INTO folders(name,id)
+VALUES ("b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1","Important"),
+("b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1","Super"),
+("b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1","Spangley");
