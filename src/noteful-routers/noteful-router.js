@@ -51,7 +51,7 @@ notefulRouter
         res
           .status(201)
           .location(`/api/noteful/${folder.id}`)
-          .json(serializeFolder(folder))
+          //   .json(serializeFolder(folder))
           .send(folder);
       })
       .catch(next);
@@ -134,12 +134,66 @@ notefulRouter
 
     NoteService.insertNote(req.app.get('db'), newNote)
       .then(note => {
-        logger.info(`Folder with ${note.id} was created.`);
+        logger.info(`Note with id ${note.id} was created.`);
         res
           .status(201)
-          .location(`/api/noteful/${note.id}`)
-          .json(serializeFolder(note))
+          .location(`/api/noteful/notes/${note.id}`)
+          //   .json(serializeFolder(note))
           .send(note);
+      })
+      .catch(next);
+  });
+notefulRouter
+  .route('/notes/:note_id')
+  .all((req, res, next) => {
+    const { note_id } = req.params;
+    NoteService.getNoteById(req.app.get('db'), note_id)
+      .then(note => {
+        if (!note) {
+          logger.error(`Note with id ${note_id} not found.`);
+          return res.status(404).json({
+            error: {
+              message: `Note id ${note_id} not found. Please try again`
+            }
+          });
+        }
+        res.note = note;
+        next();
+      })
+      .catch(next);
+  })
+  .get((req, res) => {
+    res.json(serializeNote(res.note));
+  })
+  .delete((req, res, next) => {
+    const { note_id } = req.params;
+    NoteService.deleteNote(req.app.get('db'), note_id)
+      .then(numRowsAffected => {
+        logger.info(`Note with id ${note_id} deleted.`);
+        res.status(204).end();
+      })
+      .catch(next);
+  })
+  .patch(bodyParser, (req, res, next) => {
+    const { name, content } = req.body;
+    const noteToUpdate = { name, content };
+    // const error = getFolderValidationError(folderToUpdate);
+
+    // if (error) return res.status(400).send(error);
+    const numberOfValues = Object.values(noteToUpdate).filter(Boolean).length;
+    if (numberOfValues === 0) {
+      logger.error(`Invalid update without required fields`);
+      return res.status(400).json({
+        error: {
+          message: `Request body must contain 'name' field`
+        }
+      });
+    }
+
+    NoteService.updateNote(req.app.get('db'), req.params.note_id, noteToUpdate)
+      .then(numRowsAffected => {
+        res.status(204).end();
+        logger.info(`Note with id ${req.params.note_id} updated.`);
       })
       .catch(next);
   });
