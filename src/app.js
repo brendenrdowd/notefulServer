@@ -16,11 +16,7 @@ app.use(helmet());
 app.use(cors());
 app.use(validateBearerToken);
 
-app.use('/api/noteful', notefulRouter);
-
-app.get('/api/noteful', (req, res) => {
-  res.send('Welcome to the Noteful API!');
-});
+app.use('/api/', notefulRouter);
 
 app.use(errorHandler);
 

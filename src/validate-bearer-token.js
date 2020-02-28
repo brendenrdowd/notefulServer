@@ -3,6 +3,7 @@ const logger = require('./logger');
 
 function validateBearerToken(req, res, next) {
   const authToken = req.get('Authorization');
+  console.log(authToken)
 
   if (!authToken) {
     logger.error(`Unauthorized request to path: ${req.path}`);
