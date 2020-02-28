@@ -134,7 +134,7 @@ notefulRouter
 
     NoteService.insertNote(req.app.get('db'), newNote)
       .then(note => {
-        logger.info(`Folder with id ${note.id} was created.`);
+        logger.info(`Note with id ${note.id} was created.`);
         res
           .status(201)
           .location(`/api/noteful/notes/${note.id}`)
@@ -150,10 +150,10 @@ notefulRouter
     NoteService.getNoteById(req.app.get('db'), note_id)
       .then(note => {
         if (!note) {
-          logger.error(`Folder with id ${note_id} not found.`);
+          logger.error(`Note with id ${note_id} not found.`);
           return res.status(404).json({
             error: {
-              message: `folder id ${note_id} not found. Please try again`
+              message: `Note id ${note_id} not found. Please try again`
             }
           });
         }
@@ -169,7 +169,7 @@ notefulRouter
     const { note_id } = req.params;
     NoteService.deleteNote(req.app.get('db'), note_id)
       .then(numRowsAffected => {
-        logger.info(`Folder with id ${folder_id} deleted.`);
+        logger.info(`Note with id ${folder_id} deleted.`);
         res.status(204).end();
       })
       .catch(next);
@@ -185,19 +185,15 @@ notefulRouter
       logger.error(`Invalid update without required fields`);
       return res.status(400).json({
         error: {
-          message: `Request body must content either 'content' or 'name'`
+          message: `Request body must contain 'name' field`
         }
       });
     }
 
-    FolderService.updateFolder(
-      req.app.get('db'),
-      req.params.folder_id,
-      folderToUpdate
-    )
+    NoteService.updateNote(req.app.get('db'), req.params.note_id, noteToUpdate)
       .then(numRowsAffected => {
         res.status(204).end();
-        logger.info(`Folder with id ${req.params.folder_id} updated.`);
+        logger.info(`Note with id ${req.params.note_id} updated.`);
       })
       .catch(next);
   });
