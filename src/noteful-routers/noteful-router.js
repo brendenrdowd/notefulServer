@@ -51,7 +51,7 @@ notefulRouter
         res
           .status(201)
           .location(`/api/noteful/${folder.id}`)
-          .json(serializeFolder(folder))
+          //   .json(serializeFolder(folder))
           .send(folder);
       })
       .catch(next);
@@ -138,7 +138,7 @@ notefulRouter
         res
           .status(201)
           .location(`/api/noteful/notes/${note.id}`)
-          .json(serializeFolder(note))
+          //   .json(serializeFolder(note))
           .send(note);
       })
       .catch(next);
@@ -169,7 +169,7 @@ notefulRouter
     const { note_id } = req.params;
     NoteService.deleteNote(req.app.get('db'), note_id)
       .then(numRowsAffected => {
-        logger.info(`Note with id ${folder_id} deleted.`);
+        logger.info(`Note with id ${note_id} deleted.`);
         res.status(204).end();
       })
       .catch(next);
