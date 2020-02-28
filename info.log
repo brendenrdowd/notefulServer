@@ -71,3 +71,5 @@
 {"message":"Folder with id 43 was created.","level":"info"}
 {"message":"Cannot set headers after they are sent to the client","level":"error"}
 {"message":"select * from \"notes\" - relation \"notes\" does not exist","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"notes_pkey\"","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - duplicate key value violates unique constraint \"notes_pkey\"","level":"error"}
