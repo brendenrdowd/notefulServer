@@ -9,7 +9,7 @@ CREATE TABLE notes (
   content TEXT NOT NULL,
   modified TIMESTAMP DEFAULT now() NOT NULL,
   created_at TIMESTAMP DEFAULT now() NOT NULL,
-  folderId INTEGER REFERENCES folders(id) ON DELETE CASCADE NOT NULL
+  folder_id INTEGER REFERENCES folders(id) ON DELETE CASCADE NOT NULL
 );
 
 

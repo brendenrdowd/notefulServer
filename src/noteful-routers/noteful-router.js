@@ -18,7 +18,7 @@ const serializeNote = note => ({
   modified: note.modified,
   content: note.content,
   name: note.name,
-  folderId: note.folderid
+  folder_id: note.folder_id
 });
 
 //ROUTE FOR FOLDERS
@@ -59,16 +59,16 @@ notefulRouter
   });
 //GETS, DELETE, AND UPDATE FOLDER BY ID
 notefulRouter
-  .route('/folders/:folderId')
+  .route('/folders/:folder_id')
   .all((req, res, next) => {
-    const { folderId } = req.params;
-    FolderService.getFolderById(req.app.get('db'), folderId)
+    const { folder_id } = req.params;
+    FolderService.getFolderById(req.app.get('db'), folder_id)
       .then(folder => {
         if (!folder) {
-          logger.error(`Folder with id ${folderId} not found.`);
+          logger.error(`Folder with id ${folder_id} not found.`);
           return res.status(404).json({
             error: {
-              message: `folder id ${folderId} not found. Please try again`
+              message: `folder id ${folder_id} not found. Please try again`
             }
           });
         }
@@ -81,10 +81,10 @@ notefulRouter
     res.json(serializeFolder(res.folder));
   })
   .delete((req, res, next) => {
-    const { folderId } = req.params;
-    FolderService.deleteFolder(req.app.get('db'), folderId)
+    const { folder_id } = req.params;
+    FolderService.deleteFolder(req.app.get('db'), folder_id)
       .then(numRowsAffected => {
-        logger.info(`Folder with id ${folderId} deleted.`);
+        logger.info(`Folder with id ${folder_id} deleted.`);
         res.status(204).end();
       })
       .catch(next);
@@ -98,12 +98,12 @@ notefulRouter
 
     FolderService.updateFolder(
       req.app.get('db'),
-      req.params.folderId,
+      req.params.folder_id,
       folderToUpdate
     )
       .then(numRowsAffected => {
         res.status(204).end();
-        logger.info(`Folder with id ${req.params.folderId} updated.`);
+        logger.info(`Folder with id ${req.params.folder_id} updated.`);
       })
       .catch(next);
   });
@@ -119,12 +119,12 @@ notefulRouter
       .catch(next);
   })
   .post(bodyParser, (req, res, next) => {
-    const { name, content, folderId } = req.body;
-    const newNote = { name, content, folderId };
+    const { name, content, folder_id } = req.body;
+    const newNote = { name, content, folder_id };
     console.log(newNote)
     // const error = getFolderValidationError(newFolder);
 
-    for (const field of ['name', 'content', 'folderId']) {
+    for (const field of ['name', 'content', 'folder_id']) {
       if (!newNote[field]) {
         logger.error(`${field} is required`);
         return res
@@ -136,12 +136,12 @@ notefulRouter
 
     NoteService.insertNote(req.app.get('db'), newNote)
       .then(note => {
-        console.log(note)
+        console.log(note.id)
         logger.info(`Note with id ${note.id} was created.`);
-        // res
-        //   .status(201)
-        //   .location(path.posix.join(req.originalUrl, `/${note.id}`))
-        //   .send(note);
+        res
+          .status(201)
+          .location(`/api/notes/${note.id}`)
+          .send(note);
       })
       .catch(next);
   });

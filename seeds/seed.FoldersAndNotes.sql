@@ -6,7 +6,7 @@ VALUES ('Important'),
 ('Spangley');
 ;
 
-INSERT INTO notes(name, modified, folderId, content)
+INSERT INTO notes(name, modified, folder_id, content)
 VALUES
 ('Dogs',
       '2019-01-03T00:00:00.000Z',

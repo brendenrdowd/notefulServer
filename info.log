@@ -130,20 +130,34 @@
 {"message":"Unauthorized request to path: /","level":"error"}
 {"message":"Unauthorized request to path: /robots.txt","level":"error"}
 {"message":"Unauthorized request to path: /favicon.ico","level":"error"}
-{"message":"insert into \"notes\" (\"content\", \"folderId\", \"name\") values ($1, $2, $3) returning * - column \"folderId\" of relation \"notes\" does not exist","level":"error"}
-{"message":"insert into \"notes\" (\"content\", \"folderId\", \"name\") values ($1, $2, $3) returning * - column \"folderId\" of relation \"notes\" does not exist","level":"error"}
-{"message":"folderId is required","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - column \"folder_id\" of relation \"notes\" does not exist","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - column \"folder_id\" of relation \"notes\" does not exist","level":"error"}
+{"message":"folder_id is required","level":"error"}
 {"message":"Note with id 15 deleted.","level":"info"}
 {"message":"Note with id 14 deleted.","level":"info"}
 {"message":"Note with id 13 deleted.","level":"info"}
-{"message":"insert into \"notes\" (\"content\", \"folderId\", \"name\") values ($1, $2, $3) returning * - column \"folderId\" of relation \"notes\" does not exist","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - column \"folder_id\" of relation \"notes\" does not exist","level":"error"}
 {"message":"folderid is required","level":"error"}
 {"message":"folderid is not defined","level":"error"}
-{"message":"folderId is required","level":"error"}
-{"message":"folderId is required","level":"error"}
+{"message":"folder_id is required","level":"error"}
+{"message":"folder_id is required","level":"error"}
 {"message":"Note with id 16 was created.","level":"info"}
 {"message":"Note with id 7 deleted.","level":"info"}
 {"message":"Folder with 4 was created.","level":"info"}
 {"message":"folderd is not defined","level":"error"}
-{"message":"insert into \"notes\" (\"content\", \"folderId\", \"name\") values ($1, $2, $3) returning * - column \"folderId\" of relation \"notes\" does not exist","level":"error"}
-{"message":"insert into \"notes\" (\"content\", \"folderId\", \"name\") values ($1, $2, $3) returning * - column \"folderId\" of relation \"notes\" does not exist","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - column \"folder_id\" of relation \"notes\" does not exist","level":"error"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - column \"folder_id\" of relation \"notes\" does not exist","level":"error"}
+{"message":"Note with id 16 was created.","level":"info"}
+{"message":"Note with id 17 was created.","level":"info"}
+{"message":"Note with id 18 was created.","level":"info"}
+{"message":"Note with id 19 was created.","level":"info"}
+{"message":"Note with id 20 was created.","level":"info"}
+{"message":"Note with id 21 was created.","level":"info"}
+{"message":"Note with id 22 was created.","level":"info"}
+{"message":"Note with id 23 was created.","level":"info"}
+{"message":"Note with id 24 was created.","level":"info"}
+{"message":"Note with id 25 was created.","level":"info"}
+{"message":"Folder with 4 was created.","level":"info"}
+{"message":"Note with id 26 was created.","level":"info"}
+{"message":"insert into \"notes\" (\"content\", \"folder_id\", \"name\") values ($1, $2, $3) returning * - invalid input syntax for type integer: \"VanDSDv0e5\"","level":"error"}
+{"message":"Note with id 27 was created.","level":"info"}
