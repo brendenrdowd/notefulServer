@@ -4,8 +4,8 @@ const logger = require('../logger');
 const notefulRouter = express.Router();
 const bodyParser = express.json();
 const path = require('path')
-const FolderService = require('../folder-services');
-const NoteService = require('../note-services');
+const FolderService = require('../services/folder-services');
+const NoteService = require('../services/note-services');
 const { getFolderValidationError } = require('./folder-validator');
 
 const serializeFolder = folder => ({
